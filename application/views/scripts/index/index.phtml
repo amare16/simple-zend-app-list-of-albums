@@ -1,0 +1,30 @@
+<?php 
+
+$this->title = "List of Ethiopian Music Albums";
+//$this->headTitle($this->title);
+
+?>
+
+<p><a href="<?= $this->url(array('controller' => 'index',
+                'action' => 'add'));?>"><button class="btn btn-success">Add new album</button></a></p>
+
+<table class="table">
+    <tr>
+        <th>Title</th>
+        <th>Artist</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach($this->albums as $album) : ?>
+
+    <tr>
+        <td><?= $this->escape($album->title); ?></td>
+        <td><?= $this->escape($album->artist); ?></td>
+        <td>
+            <a href="<?= $this->url(array('controller' => 'index', 'action' => 'edit', 'id' => $album->id)); ?>"><button class="btn btn-warning">Edit</button></a>
+            <a href="<?= $this->url(array('controller' => 'index', 'action' => 'delete', 'id' => $album->id)); ?>"><button class="btn btn-danger">Delete</button></a>
+        </td>
+    </tr>
+
+    <?php endforeach; ?>
+
+</table>
